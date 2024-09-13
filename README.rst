@@ -17,8 +17,23 @@ NumPy 1.xx and 2.0.
 
 All users should migrate to expressing a build dependency on ``numpy``
 directly, according to the guidance given in
-`Adding a dependency on NumPy <https://numpy.org/devdocs/dev/depending_on_numpy.html#adding-a-dependency-on-numpy>`__.
+`Adding a dependency on NumPy <https://numpy.org/doc/2.1/dev/depending_on_numpy.html#build-time-dependency>`__.
 
+.. code:: toml
+
+    [build-system]
+    requires = ["numpy>=1.25,<3"]
+
+Compiling backward-compatible wheels using NumPy 1.x for older Python
+versions can still be done using this package.
+
+.. code:: toml
+
+    [build-system]
+    requires = [
+        "oldest-supported-numpy; python_version<='3.8'",
+        "numpy>=1.25,<3; python_version>'3.8'",
+    ]
 
 About
 -----
