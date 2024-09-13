@@ -22,17 +22,17 @@ directly, according to the guidance given in
 .. code:: toml
 
     [build-system]
-    requires = ["numpy>=1.25,<3"]
+    requires = ["numpy>=2.0,<3"]
 
-Compiling backward-compatible wheels using NumPy 1.x for older Python
-versions can still be done using this package.
+Python 3.13 is supported as of NumPy 2.1. For older Python versions
+this package can still be used to compile against NumPy 1.xx.
 
 .. code:: toml
 
     [build-system]
     requires = [
         "oldest-supported-numpy; python_version<='3.8'",
-        "numpy>=1.25,<3; python_version>'3.8'",
+        "numpy>=1.25,<2; python_version>'3.8'",
     ]
 
 About
