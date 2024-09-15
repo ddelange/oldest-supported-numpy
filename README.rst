@@ -17,8 +17,23 @@ NumPy 1.xx and 2.0.
 
 All users should migrate to expressing a build dependency on ``numpy``
 directly, according to the guidance given in
-`Adding a dependency on NumPy <https://numpy.org/devdocs/dev/depending_on_numpy.html#adding-a-dependency-on-numpy>`__.
+`Adding a dependency on NumPy <https://numpy.org/doc/2.1/dev/depending_on_numpy.html#build-time-dependency>`__.
 
+.. code:: toml
+
+    [build-system]
+    requires = ["numpy>=2.0,<3"]
+
+Python 3.13 is supported as of NumPy 2.1. For older Python versions
+this package can still be used to compile against NumPy 1.xx.
+
+.. code:: toml
+
+    [build-system]
+    requires = [
+        "oldest-supported-numpy; python_version<='3.8'",
+        "numpy>=1.25,<2; python_version>'3.8'",
+    ]
 
 About
 -----
